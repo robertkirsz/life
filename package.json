@@ -1,8 +1,8 @@
 {
-  "name": "life",
-  "version": "1.0.0",
+  "name": "@robertkirsz/life",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "life.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
