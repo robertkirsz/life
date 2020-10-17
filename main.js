@@ -42,3 +42,13 @@ document.getElementById('step-button').addEventListener('click', life.step)
 document.getElementById('start-button').addEventListener('click', life.start)
 document.getElementById('stop-button').addEventListener('click', life.stop)
 document.getElementById('save-button').addEventListener('click', life.save)
+
+const glider = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0],
+  [0, 0, 0, 1, 0],
+  [0, 1, 1, 1, 0],
+  [0, 0, 0, 0, 0]
+]
+
+document.getElementById('load-button').addEventListener('click', () => life.load(glider))

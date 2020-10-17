@@ -5,20 +5,13 @@ window.Life = function (config = {}) {
   let width = config.width || 50
   let height = config.height || 50
 
+  // prettier-ignore
   const colors = config.colors || [
-    '#0047b3',
-    '#0052cc',
-    '#005ce6',
-    '#0066ff',
-    '#1a75ff',
-    '#3385ff',
-    '#4d94ff',
-    '#66a3ff',
-    '#80b3ff',
-    '#99c2ff'
+    '#0047b3', '#0052cc', '#005ce6', '#0066ff', '#1a75ff',
+    '#3385ff', '#4d94ff', '#66a3ff', '#80b3ff', '#99c2ff'
   ]
 
-  let matrix = createMatrix()
+  let matrix = config.matrix || createMatrix()
 
   const canvas = document.getElementById(id)
   canvas.setAttribute('width', cellSize * width)
@@ -51,14 +44,11 @@ window.Life = function (config = {}) {
   }
 
   function generate() {
-    matrix = Array(height)
-      .fill()
-      .map(() =>
-        Array(width)
-          .fill()
-          .map(() => Number(Math.random() >= 0.7))
-      )
+    const rows = Array(height).fill()
+    const columns = Array(width).fill()
+    const createCell = () => Number(Math.random() >= 0.7)
 
+    matrix = rows.map(() => columns.map(createCell))
     render()
   }
 
@@ -151,5 +141,12 @@ window.Life = function (config = {}) {
     console.log(matrix)
   }
 
-  return { generate, step, render, start, stop, clear, updateValues, save }
+  function load(data = []) {
+    matrix = data
+    width = data[0].length
+    height = data.length
+    render()
+  }
+
+  return { generate, step, render, start, stop, clear, updateValues, save, load }
 }
