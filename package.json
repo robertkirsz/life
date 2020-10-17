@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "description": "",
   "main": "life.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Robert Kirsz <robert.kirsz@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^7.2.0"
+    "eslint": "7.11.0"
   }
 }
