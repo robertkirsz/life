@@ -5,7 +5,12 @@
   "main": "life.js",
   "author": "Robert Kirsz <robert.kirsz@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore --fix '{**/,}*.js'",
+    "prettier": "prettier --ignore-path .gitignore --write '{**/,}*.{js,css}'"
+  },
   "devDependencies": {
-    "eslint": "7.11.0"
+    "eslint": "7.11.0",
+    "prettier": "2.1.2"
   }
 }

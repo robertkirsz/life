@@ -35,11 +35,10 @@ Object.entries(inputs).forEach(([name, props]) => {
   wrapper.appendChild(documentFragment)
 })
 
-document
-  .getElementById('generate-button')
-  .addEventListener('click', life.generate)
+document.getElementById('generate-button').addEventListener('click', life.generate)
 
 document.getElementById('clear-button').addEventListener('click', life.clear)
 document.getElementById('step-button').addEventListener('click', life.step)
 document.getElementById('start-button').addEventListener('click', life.start)
 document.getElementById('stop-button').addEventListener('click', life.stop)
+document.getElementById('save-button').addEventListener('click', life.save)

@@ -37,17 +37,15 @@ window.Life = function (config = {}) {
   function render() {
     canvas.setAttribute('width', cellSize * width)
     canvas.setAttribute('height', cellSize * height)
+
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+
     matrix.forEach((row, rowIndex) => {
       row.forEach((cell, cellIndex) => {
         if (!cell) return
+
         ctx.fillStyle = colors[cell - 1] || colors.slice(-1)[0]
-        ctx.fillRect(
-          cellIndex * cellSize,
-          rowIndex * cellSize,
-          cellSize,
-          cellSize
-        )
+        ctx.fillRect(cellIndex * cellSize, rowIndex * cellSize, cellSize, cellSize)
       })
     })
   }
@@ -84,6 +82,7 @@ window.Life = function (config = {}) {
           matrix[rowIndex + 1] && matrix[rowIndex + 1][cellIndex],
           matrix[rowIndex + 1] && matrix[rowIndex + 1][cellIndex + 1]
         ].filter(Boolean).length;
+
         if (isAlive && [2, 3].includes(numberOfNeighbors)) return cell + 1 // Survives
         if (!isAlive && numberOfNeighbors === 3) return 1 // Is born
         return 0 // Dies
@@ -108,10 +107,12 @@ window.Life = function (config = {}) {
   function updateValues(name, value) {
     if (['fps', 'cellSize', 'width', 'height'].includes(name)) {
       stop()
+
       if (name === 'fps') fps = value
       if (name === 'cellSize') cellSize = value
       if (name === 'width') width = value
       if (name === 'height') height = value
+
       matrix = createMatrix()
       render()
     }
@@ -139,15 +140,16 @@ window.Life = function (config = {}) {
 
     matrix = matrix.map((row, rowIndex) =>
       row.map((cell, cellIndex) =>
-        cellIndex === Math.floor(x / cellSize) &&
-        rowIndex === Math.floor(y / cellSize)
-          ? 1
-          : cell
+        cellIndex === Math.floor(x / cellSize) && rowIndex === Math.floor(y / cellSize) ? 1 : cell
       )
     )
 
     render()
   }
 
-  return { generate, step, render, start, stop, clear, updateValues }
+  function save() {
+    console.log(matrix)
+  }
+
+  return { generate, step, render, start, stop, clear, updateValues, save }
 }
